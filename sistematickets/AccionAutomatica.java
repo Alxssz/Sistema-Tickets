@@ -1,6 +1,7 @@
 package sistematickets;
 
 public class AccionAutomatica {
+
     private EstadoTicket estado;
     private String descripcion;
 
@@ -9,6 +10,11 @@ public class AccionAutomatica {
         this.descripcion = descripcion;
     }
 
-    public EstadoTicket getEstado() { return estado; }
-    public String getDescripcion() { return descripcion; }
+    public EstadoTicket getEstado() {
+        return estado;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
 }

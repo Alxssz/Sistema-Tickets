@@ -7,8 +7,8 @@ public class Sistematickets {
         // clase 01
         System.out.println("___________________________________________________");
         System.out.println("CLASE 1"); // imprime el título de la clase 1
-        ParametrosDelSistema e1 = new ParametrosDelSistema("Duracel", "logo", "idioma Espanol", " 13.00", 360); // crea empresa
-        e1.mostrarEmpresa(); //  información de la empresa
+        //ParametrosDelSistema e1 = new ParametrosDelSistema("Duracel", "logo", "idioma Espanol", " 13.00", 360); // crea empresa
+       // e1.mostrarEmpresa(); //  información de la empresa
         System.out.println("");
 
         // clase 2

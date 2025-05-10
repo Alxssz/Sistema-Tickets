@@ -2,39 +2,45 @@ package sistematickets;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class Rol {
 
-    private String nombreRol;
-    private String descripcion;
+    private StringProperty nombreRol;
+    private StringProperty descripcion;
     private List<Permiso> permisos;
 
     public Rol(String nombreRol, String descripcion) {
-        this.nombreRol = nombreRol;
-        this.descripcion = descripcion;
+        this.nombreRol = new SimpleStringProperty(nombreRol);
+        this.descripcion = new SimpleStringProperty(descripcion);
         this.permisos = new ArrayList<>();
     }
+
     // Métodos getter y setter
-    public String getNombreRol() {
+    public StringProperty nombreRolProperty() {
         return nombreRol;
     }
 
-    public void setNombreRol(String nombreRol) {
-        if (nombreRol.length() > 3 && nombreRol.length() < 50) {
-            this.nombreRol = nombreRol;
-        } else {
-            System.out.println("Debe contener entre 3 y 50 caracteres. No puede estar vacío.");
-        }
+    public String getNombreRol() {
+        return nombreRol.get();
     }
 
-    public String getDescripcion() {
+    public void setNombreRol(String nombreRol) {
+        this.nombreRol.set(nombreRol);
+    }
+
+    public StringProperty descripcionProperty() {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public String getDescripcion() {
+        return descripcion.get();
     }
 
+    public void setDescripcion(String descripcion) {
+        this.descripcion.set(descripcion);
+    }
     public List<Permiso> getPermisos() {
         return permisos;
     }
@@ -43,7 +49,12 @@ public class Rol {
         this.permisos.add(permiso);
     }
 
-    public void mostrarInformacionRol () {
-        System.out.println("Nombre rol: "+ nombreRol + "Descripcion" + descripcion);
+    public void mostrarInformacionRol() {
+        System.out.println("Nombre rol: " + nombreRol + "Descripcion" + descripcion);
+    }
+
+    @Override
+    public String toString() {
+        return nombreRol.get(); // Retorna solo el nombre del rol
     }
 }

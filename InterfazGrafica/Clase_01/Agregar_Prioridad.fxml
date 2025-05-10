@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="168.0" prefWidth="336.0" style="-fx-background-color: #1a1a1a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfazGrafica.Clase_01.AgregarPrioridadController">
+   <children>
+      <!-- Título -->
+      <Text fill="WHITE" layoutX="19.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nuevo nivel de Prioridad">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Text>
+      
+      <!-- Etiqueta "Prioridad" -->
+      <Text fill="WHITE" layoutX="19.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prioridad" />
+      
+      <!-- Campo de texto para ingresar la nueva prioridad -->
+      <TextField fx:id="prioridadField" layoutX="82.0" layoutY="65.0" prefHeight="25.0" prefWidth="208.0" promptText="Ingresar nueva prioridad" />
+      
+      <!-- Botón para guardar la nueva prioridad -->
+      <Button fx:id="guardarBtn" layoutX="46.0" layoutY="117.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" style="-fx-background-radius: 8; -fx-background-color: #9eb9f0;" text="Guardar" onAction="#guardarPrioridad"/>
+      
+      <!-- Botón para cancelar -->
+      <Button fx:id="cancelarBtn" layoutX="186.0" layoutY="117.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" style="-fx-background-radius: 8; -fx-background-color: #9eb9f0;" text="Cancelar" onAction="#cancelar"/>
+   </children>
+</Pane>

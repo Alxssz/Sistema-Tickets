@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="342.0" prefWidth="409.0" style="-fx-background-color: #1a1a1a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfazGrafica.Clase_05.ventana5Controller">
+   <children>
+      <Text fill="#f2f2f2" layoutX="33.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Estado" wrappingWidth="119.982421875" />
+      <TextField focusTraversable="false" layoutX="175.0" layoutY="60.0" prefHeight="25.0" prefWidth="204.0" promptText="Ingresar Nombre" />
+      <Text fill="#f2f2f2" layoutX="33.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripción del Estado" />
+      <TextField focusTraversable="false" layoutX="175.0" layoutY="98.0" prefHeight="25.0" prefWidth="204.0" promptText="Ingresar Descripción" />
+      <Text fill="#f2f2f2" layoutX="32.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estado Final" />
+      <CheckBox layoutX="175.0" layoutY="138.0" mnemonicParsing="false" text="Resuleto/Cerrado" textFill="#9eb9f0" />
+      <Text fill="#f2f2f2" layoutX="33.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estados Siguientes" />
+      <CheckBox layoutX="33.0" layoutY="206.0" mnemonicParsing="false" text="En Proceso" textFill="#9eb9f0" />
+      <CheckBox layoutX="33.0" layoutY="232.0" mnemonicParsing="false" text="Resuleto" textFill="#9eb9f0" />
+      <CheckBox layoutX="33.0" layoutY="258.0" mnemonicParsing="false" text="Pendiente" textFill="#9eb9f0" />
+      <Button layoutX="215.0" layoutY="290.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" style="-fx-background-radius: 8; -fx-background-color: #9eb9f0;" text="Guardar " />
+      <Button layoutX="305.0" layoutY="290.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" style="-fx-background-radius: 8; -fx-background-color: #9eb9f0;" text="Cancelar" />
+      <Text fill="WHITE" layoutX="33.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos de Estado" wrappingWidth="119.982421875">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>

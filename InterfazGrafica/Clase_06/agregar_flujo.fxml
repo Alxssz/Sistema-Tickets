@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="516.0" prefWidth="581.0" style="-fx-background-color: #1a1a1a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfazGrafica.Clase_06.ventana6Controller">
+   <children>
+      <Button defaultButton="true" layoutX="344.0" layoutY="463.0" prefHeight="25.0" prefWidth="101.0" style="-fx-background-radius: 8; -fx-background-color: #9eb9f0;" text="Guardar" />
+      <Button cancelButton="true" layoutX="457.0" layoutY="463.0" prefHeight="25.0" prefWidth="101.0" style="-fx-background-radius: 8; -fx-background-color: #9eb9f0;" text="Cancelar" />
+      <TitledPane collapsible="true" expanded="false" layoutX="19.0" layoutY="421.0" prefHeight="32.0" prefWidth="544.0" text="Reglas de Transición">
+         <content>
+            <VBox fx:id="reglasContainer" prefHeight="25.0" prefWidth="516.0">
+               <children>
+                  <HBox prefHeight="27.0" prefWidth="536.0">
+                     <children>
+                        <CheckBox fx:id="checkTecnicoRequerido" />
+                        <Label prefHeight="27.0" prefWidth="103.0" text="  Solo si Campo" />
+                        <ComboBox fx:id="campoCombo" prefHeight="27.0" prefWidth="162.0" promptText="Seleccione campo" />
+                        <ComboBox fx:id="operadorCombo" prefHeight="27.0" prefWidth="155.0" promptText="Operador" />
+                        <TextField fx:id="valorCampo" prefHeight="26.0" prefWidth="93.0" promptText="Valor" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </TitledPane>
+      <Label layoutX="33.0" layoutY="347.0" style="-fx-text-fill: #ffffff;" text="Estados Siguientes:" textFill="#eeecec" textOverrun="CLIP" />
+      <VBox layoutX="177.0" layoutY="347.0" prefHeight="57.0" prefWidth="117.0">
+         <children>
+            <CheckBox fx:id="enProceso" text="En Proceso" textFill="#9eb9f0" />
+            <CheckBox fx:id="resuelto" text="Resuelto" textFill="#9eb9f0" />
+            <CheckBox fx:id="pendiente" text="Pendiente" textFill="#9eb9f0" />
+         </children>
+      </VBox>
+      <Label layoutX="33.0" layoutY="303.0" style="-fx-text-fill: #ffffff;" text="Estado Final:" textFill="#eeecec" textOverrun="CLIP" />
+      <CheckBox fx:id="estadoFinal" layoutX="177.0" layoutY="299.0" text="Resuelto/Cerrado" textFill="#9eb9f0" />
+      <Label layoutX="33.0" layoutY="117.0" style="-fx-text-fill: #ffffff;" text="Estados Involucrados:" textFill="#eeecec" textOverrun="CLIP" />
+      <ListView fx:id="estadosList" layoutX="177.0" layoutY="117.0" prefHeight="165.0" prefWidth="375.0" />
+      <Label layoutX="33.0" layoutY="71.0" style="-fx-text-fill: #ffffff;" text="Nombre del Flujo:" textFill="#eeecec" textOverrun="CLIP" />
+      <TextField layoutX="177.0" layoutY="67.0" prefHeight="25.0" prefWidth="375.0" promptText="Ingresar Nombre" />
+      <Text fill="WHITE" layoutX="33.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos del Flujo De Trabajo">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>

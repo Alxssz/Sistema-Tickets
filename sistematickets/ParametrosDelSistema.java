@@ -1,35 +1,53 @@
 package sistematickets;
 
-public class ParametrosDelSistema {
+import java.io.File;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ParametrosDelSistema implements Serializable {
 
     private String nombreEmpresa;
     private String logo;
     private String idioma;
     private String zonaHoraria;
     private int tiempoVencimientoTicket;
-    private String prioridades;
+    private List<String> prioridades = new ArrayList<>();
 
-    public ParametrosDelSistema(String nombreEmpresa, String logo, String idioma, String zonaHoraria, int tiempoVencimientoTicket) {
-        if (nombreEmpresa.length() >= 3 && nombreEmpresa.length() <= 100) {
-            this.nombreEmpresa = nombreEmpresa;
-        } else {
-            System.out.println("El nombre no puede estar vacio Debe contener entre 3 y 100 caracteres");
-        }
-        this.logo = logo;
-        this.idioma = idioma;
-        this.zonaHoraria = zonaHoraria;
-        this.tiempoVencimientoTicket = tiempoVencimientoTicket;
+    public ParametrosDelSistema(String nombreEmpresa, String logo, String idioma, String zonaHoraria, int tiempoVencimientoTicket) throws Exception {
+        setNombreEmpresa(nombreEmpresa);
+        setLogo(logo);
+        setIdioma(idioma);
+        setZonaHoraria(zonaHoraria);
+        setTiempoVencimientoTicket(tiempoVencimientoTicket);
     }
-//setters
+
     public void setNombreEmpresa(String nombreEmpresa) {
-        if (nombreEmpresa.length() > 3 || nombreEmpresa.length() < 100) {
+        if (nombreEmpresa != null && nombreEmpresa.length() >= 3 && nombreEmpresa.length() <= 100) {
             this.nombreEmpresa = nombreEmpresa;
         } else {
-            System.out.println("El nombre no puede estar vacio Debe contener entre 3 y 100 caracteres");
+            System.out.println("El nombre no puede estar vacio. Debe contener entre 3 y 100 caracteres.");
         }
     }
 
-    public void setLogo(String logo) {
+    public void AgregarPrioridad(String Prioridad) {
+        prioridades.add(Prioridad);
+    }
+
+    public void EliminarPrioridad(String Prioridad) {
+        prioridades.remove(Prioridad);
+    }
+
+    public void setLogo(String logo) throws Exception {
+        if (logo == null || (!logo.endsWith(".jpg") && !logo.endsWith(".png"))) {
+            throw new Exception("El logo debe estar en formato JPG o PNG.");
+        }
+        // Verificar el tamaño del archivo (máximo 2MB)
+        File archivo = new File(logo);
+        if (archivo.length() > 2 * 1024 * 1024) {  // 2MB en bytes
+            throw new Exception("El logo debe tener un tamaño máximo de 2MB.");
+        }
+
         this.logo = logo;
     }
 
@@ -48,42 +66,55 @@ public class ParametrosDelSistema {
     }
 
     public void setTiempoVencimientoTicket(int tiempoVencimientoTicket) throws Exception {
-        if (tiempoVencimientoTicket <= 0 || tiempoVencimientoTicket < 365) {
-            throw new Exception("El tiempo de vencimiento debe ser mayor que cero y menor a 365.");
+        if (tiempoVencimientoTicket >= 1 && tiempoVencimientoTicket <= 365) {
+            this.tiempoVencimientoTicket = tiempoVencimientoTicket;
+        } else {
+            throw new Exception("El tiempo de vencimiento debe estar entre 1 y 365 días.");
         }
-        this.tiempoVencimientoTicket = tiempoVencimientoTicket;
     }
 
-    public void setPrioridades(String prioridades) {
+    public void setPrioridades(List<String> prioridades) throws Exception {
+        if (prioridades == null || prioridades.size() < 3) {
+            throw new Exception("Debe definir al menos tres niveles de prioridad.");
+        }
         this.prioridades = prioridades;
     }
 
+    // Getters
     public String getNombreEmpresa() {
-        return this.nombreEmpresa;
+        return nombreEmpresa;
     }
-//getters
+
     public String getLogo() {
-        return this.logo;
+        return logo;
     }
 
     public String getIdioma() {
-        return this.idioma;
+        return idioma;
     }
 
     public String getZonaHoraria() {
-        return this.zonaHoraria;
+        return zonaHoraria;
     }
 
     public int getTiempoVencimientoTicket() {
-        return this.tiempoVencimientoTicket;
+        return tiempoVencimientoTicket;
     }
 
-    public String getPrioridades() {
-        return this.prioridades;
+    public List<String> getPrioridades() {
+        return prioridades;
     }
 
     //metodos
     public void mostrarEmpresa() {
         System.out.println(nombreEmpresa + " |" + logo + " |" + idioma + " |" + zonaHoraria + " |" + tiempoVencimientoTicket);
+    }
+
+    public void setDiasVencimientoTicket(int diasVencimiento) {
+       
+    }
+
+    public Integer getDiasVencimientoTicket() {
+        return tiempoVencimientoTicket;
     }
 }

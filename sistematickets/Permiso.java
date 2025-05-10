@@ -13,6 +13,7 @@ public class Permiso {
         }
 
         this.descripcion = descripcion;
+
     }
 
     // Métodos getter y setter
@@ -34,5 +35,10 @@ public class Permiso {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    @Override
+    public String toString() {
+        return nombrePermiso;  // O cualquier otra propiedad que quieras mostrar
     }
 }
