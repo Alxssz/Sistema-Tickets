@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="509.0" prefWidth="627.0" style="-fx-background-color: #1a1a1a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfazGrafica.Clase_06.flujoController">
+   <children>
+      <Button fx:id="btnGuardar" defaultButton="true" layoutX="383.0" layoutY="463.0" onAction="#guardarFlujoTrabajo" prefHeight="25.0" prefWidth="101.0" style="-fx-background-radius: 8; -fx-background-color: #9eb9f0;" text="Guardar" />
+      <Button fx:id="btnCancelar" cancelButton="true" layoutX="489.0" layoutY="463.0" onAction="#cancelar" prefHeight="25.0" prefWidth="101.0" style="-fx-background-radius: 8; -fx-background-color: #9eb9f0;" text="Cancelar" />
+      
+      <Label layoutX="33.0" layoutY="117.0" style="-fx-text-fill: #ffffff;" text="Estados :" textFill="#eeecec" textOverrun="CLIP" />
+      <ListView fx:id="estadosList" layoutX="33.0" layoutY="144.0" prefHeight="104.0" prefWidth="185.0" />
+      
+      <Label layoutX="33.0" layoutY="71.0" style="-fx-text-fill: #ffffff;" text="Nombre del Flujo:" textFill="#eeecec" textOverrun="CLIP" />
+      
+      <Text fill="WHITE" layoutX="33.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos del Flujo De Trabajo">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Text>
+      
+      <Label layoutX="398.0" layoutY="117.0" style="-fx-text-fill: #ffffff;" text="Estados Involucrados :" textFill="#eeecec" textOverrun="CLIP" />
+      <ListView fx:id="estadosInvolucrados" layoutX="406.0" layoutY="145.0" prefHeight="88.0" prefWidth="185.0" />
+      
+      <Button fx:id="btnAgregar" defaultButton="true" layoutX="257.0" layoutY="166.0" onAction="#agregarEstadoAFlujo" prefHeight="25.0" prefWidth="117.0" style="-fx-background-radius: 8; -fx-background-color: #9eb9f0;" text="Agregar a flujo" />
+      <Button fx:id="btnEliminar" defaultButton="true" layoutX="256.0" layoutY="203.0" onAction="#eliminarEstadoDelFlujo" prefHeight="25.0" prefWidth="117.0" style="-fx-background-radius: 8; -fx-background-color: #9eb9f0;" text="Eliminar de flujo" />
+      
+      <Label layoutX="33.0" layoutY="282.0" style="-fx-text-fill: #ffffff;" text="Transiciones Permitidas" textFill="#eeecec" textOverrun="CLIP" />
+      <ListView fx:id="listaTransiciones" layoutX="33.0" layoutY="308.0" prefHeight="88.0" prefWidth="185.0" />
+      
+      <ListView fx:id="reglasTransicion" layoutX="275.0" layoutY="308.0" prefHeight="88.0" prefWidth="318.0" />
+      <Label layoutX="275.0" layoutY="282.0" style="-fx-text-fill: #ffffff;" text="Reglas de Transicion" textFill="#eeecec" textOverrun="CLIP" />
+      
+      <Label layoutX="27.0" layoutY="418.0" style="-fx-text-fill: #ffffff;" text="Acciones Automaticas" textFill="#eeecec" textOverrun="CLIP" />
+      <CheckBox fx:id="checkNotificacion" layoutX="25.0" layoutY="446.0" mnemonicParsing="false" text="Enviar Notificacion" textFill="#fcfcfc" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <TextField fx:id="nombreFlujo" layoutX="144.0" layoutY="67.0" prefHeight="25.0" prefWidth="448.0" />
+   </children>
+</Pane>

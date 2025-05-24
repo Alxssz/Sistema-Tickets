@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="518.0" prefWidth="781.0" style="-fx-background-color: #1a1a1a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfazGrafica.Clase_10.ventana10Controller">
+    <children>
+        <!-- Encabezado -->
+        <Pane prefHeight="80.0" prefWidth="781.0" style="-fx-background-color: #0d0d0d;">
+            <children>
+                <Label layoutX="59.0" layoutY="25.0" text="AGREGAR NOTA A TICKET" textFill="#eeeeee" textOverrun="CLIP">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="22.0" layoutY="25.0" onMouseClicked="#volverMenu" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Imagenes/regresar.png" />
+                    </image>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+            <Button layoutX="585.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#verHistorial" style="-fx-background-radius: 8;" text="Ver Historial Notas del ticket" />
+            </children>
+        </Pane>
+
+
+        <VBox layoutX="23.0" layoutY="91.0" prefWidth="750.0" spacing="10.0" />
+        <TextField fx:id="txtNumeroTicket" layoutX="191.0" layoutY="130.0" prefHeight="25.0" prefWidth="174.0" promptText="Ingrese el número del ticket" />
+        <TextArea fx:id="txtNota" layoutX="33.0" layoutY="207.0" prefHeight="150.0" prefWidth="352.0" promptText="Escriba la nota " />
+
+
+        <Button fx:id="btnAdjuntar" layoutX="33.0" layoutY="373.0"  prefWidth="200.0" style="-fx-background-color: #9eb9f0; -fx-background-radius: 8;" text="Adjuntar archivo" />
+        <Button fx:id="btnAgregar" layoutX="33.0" layoutY="413.0"  prefWidth="200.0" style="-fx-background-color: #9eb9f0; -fx-background-radius: 8;" text="Agregar Nota" />
+
+        <Text fill="WHITE" layoutX="33.0" layoutY="187.0" text="Contenido de la Nota" />
+
+        <Text fill="WHITE" layoutX="31.0" layoutY="147.0" text="Número de Ticket" />
+        <Text fill="WHITE" layoutX="33.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresar Nota">
+            <font>
+                <Font name="Arial Black" size="12.0" />
+            </font>
+        </Text>
+      <TableView fx:id="tablaViewTickets" layoutX="482.0" layoutY="146.0" prefHeight="308.0" prefWidth="268.0">
+         <columns>
+            <TableColumn fx:id="colNumero" prefWidth="61.0" text="No." />
+            <TableColumn fx:id="colTitulo" prefWidth="206.0" text="titulo" />
+         </columns>
+      </TableView>
+      <Text fill="WHITE" layoutX="476.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket Existentes">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnCancelar" layoutX="33.0" layoutY="454.0" prefWidth="200.0" style="-fx-background-color: #9eb9f0; -fx-background-radius: 8;" text="Cancelar" />
+    </children>
+</AnchorPane>
