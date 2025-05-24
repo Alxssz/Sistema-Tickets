@@ -2,7 +2,8 @@ package sistematickets;
 
 import java.time.LocalDateTime;
 
-public class HistorialBase {
+public abstract class HistorialBase {
+
     protected String usuario;
     protected LocalDateTime fechaHora;
 

@@ -3,10 +3,12 @@ package sistematickets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HistorialTicket {
+public class HistorialTicket extends HistorialBase {
+
     private List<String> historial;
 
-    public HistorialTicket() {
+    public HistorialTicket(List<String> historial, String usuario) {
+        super(usuario);
         this.historial = new ArrayList<>();
     }
 
