@@ -1,34 +1,41 @@
 package InterfazGrafica.Clase_01;
+
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class reestablecerController {
 
+    //VARIBLEs
     @FXML
     private Button aceptarBtn;
-
     @FXML
     private Button cancelarBtn;
+    private ventana1Controller ventanaPrincipalController;
 
-    private ventana1Controller ventanaPrincipalController;  // Controlador de la ventana principal
-
+    //CONTROLADOR
     public void setVentanaPrincipalController(ventana1Controller controller) {
         this.ventanaPrincipalController = controller;
     }
 
+    //METODOS
     @FXML
     public void aceptar() throws IOException {
         if (ventanaPrincipalController != null) {
-            ventanaPrincipalController.reestablecerConfiguracion();
+            try {
+                ventanaPrincipalController.reestablecerConfiguracion();
+            } catch (Exception ex) {
+                Logger.getLogger(reestablecerController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         cerrarVentana();
     }
 
     @FXML
     public void cancelar() {
-        // Cerrar la ventana de cancelar sin cambiar la escena
         cerrarVentana();
     }
 

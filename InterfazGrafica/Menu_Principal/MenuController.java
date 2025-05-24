@@ -19,7 +19,8 @@ public class MenuController implements Initializable {
         // Inicialización si es necesario
     }
 
-        public void volverLogin(MouseEvent event) throws IOException {
+    //CIERRE DE SESION 
+    public void volverLogin(MouseEvent event) throws IOException {
         // Cargar la nueva ventana
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/InterfazGrafica/Login/Login.fxml"));
         Parent root = loader.load();
@@ -34,6 +35,7 @@ public class MenuController implements Initializable {
         stageActual.show();
     }
 
+    //ABRIR VENTANAS
     @FXML
     public void abrirParametros(MouseEvent event) throws IOException {
         // Cargar la nueva ventana
@@ -170,7 +172,7 @@ public class MenuController implements Initializable {
         stageActual.show();
     }
 
-    public void abrirNotaTicket (MouseEvent event) throws IOException {
+    public void abrirNotaTicket(MouseEvent event) throws IOException {
         // Cargar la nueva ventana
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/InterfazGrafica/Clase_10/ventana10.fxml"));
         Parent root = loader.load();

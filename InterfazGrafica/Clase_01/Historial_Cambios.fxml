@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1a1a1a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfazGrafica.Clase_01.HistorialCambiosController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="648.0" style="-fx-background-color: #1a1a1a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfazGrafica.Clase_01.HistorialCambiosController">
     <children>
-        <Pane prefHeight="80.0" prefWidth="600.0" style="-fx-background-color: #0d0d0d;">
+        <Pane prefHeight="80.0" prefWidth="648.0" style="-fx-background-color: #0d0d0d;">
             <children>
                 <Label layoutX="20.0" layoutY="25.0" text="HISTORIAL DE CAMBIOS" textFill="#eeeeee" textOverrun="CLIP">
                     <font>
@@ -16,6 +16,6 @@
                 </Label>
             </children>
         </Pane>
-      <ListView fx:id="listaHistorial" layoutX="47.0" layoutY="105.0" prefHeight="250.0" prefWidth="510.0" />
+      <ListView fx:id="listaHistorial" layoutX="25.0" layoutY="101.0" prefHeight="265.0" prefWidth="603.0" />
     </children>
 </Pane>

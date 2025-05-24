@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
 
+    //VARIABLES
     @FXML
     private TextField usuarioField;
 
@@ -26,11 +27,32 @@ public class LoginController implements Initializable {
     @FXML
     private Text mensajeError;
 
+    @FXML
+    private Text errorInicio;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Inicialización si es necesaria
+        // Ocultar mensaje al comenzar
+        mensajeError.setVisible(false);
+
+        // Ocultar mensaje cuando el usuario escribe
+        usuarioField.textProperty().addListener((obs, oldText, newText) -> {
+            mensajeError.setVisible(false);
+        });
+        contrasenaField.textProperty().addListener((obs, oldText, newText) -> {
+            mensajeError.setVisible(false);
+        });
+
+        usuarioField.textProperty().addListener((obs, oldText, newText) -> {
+            errorInicio.setVisible(false);
+        });
+        contrasenaField.textProperty().addListener((obs, oldText, newText) -> {
+            errorInicio.setVisible(false);
+        });
+
     }
 
+    //INICIAR SESION
     @FXML
     private void iniciarSesion(ActionEvent event) throws IOException {
         String usuario = usuarioField.getText().trim();
@@ -41,16 +63,24 @@ public class LoginController implements Initializable {
             return;
         }
 
-        // Cargar el menú principal
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/InterfazGrafica/Menu_Principal/menuP.fxml"));
-        Parent root = loader.load();
+        if ((usuario.equalsIgnoreCase("Alexis")
+                || usuario.equalsIgnoreCase("Tecnico")
+                || usuario.equalsIgnoreCase("Usuario"))
+                && contrasena.contains("123")) {
 
-        Stage stageActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stageActual.close();
+            // Cargar el menú principal
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/InterfazGrafica/Menu_Principal/menuP.fxml"));
+            Parent root = loader.load();
 
-        Stage stageMenu = new Stage();
-        stageMenu.setTitle("Menu Principal");
-        stageMenu.setScene(new Scene(root));
-        stageMenu.show();
+            Stage stageActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stageActual.close();
+
+            Stage stageMenu = new Stage();
+            stageMenu.setTitle("Menu Principal");
+            stageMenu.setScene(new Scene(root));
+            stageMenu.show();
+        } else {
+            errorInicio.setVisible(true);
+        }
     }
 }

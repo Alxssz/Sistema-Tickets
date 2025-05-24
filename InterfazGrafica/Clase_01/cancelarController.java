@@ -8,11 +8,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class cancelarController {
 
+//VARIABLES
     @FXML
     private Button aceptarBtn;
 
@@ -21,12 +21,12 @@ public class cancelarController {
 
     private ventana1Controller ventanaPrincipalController;
 
-    // Método para pasar el controlador principal
+    // CONTROLADOR PRINCIPAL
     public void setVentanaPrincipalController(ventana1Controller controller) {
         this.ventanaPrincipalController = controller;
     }
 
-
+    //METODOS
     @FXML
     public void aceptarCancelo(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/InterfazGrafica/Menu_Principal/menuP.fxml"));
@@ -34,12 +34,13 @@ public class cancelarController {
 
         Stage stageActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stageActual.close();
-        
+
         Scene nuevaEscena = new Scene(root);
         stageActual.setScene(nuevaEscena);
         stageActual.setTitle("Menu Principal");
         stageActual.show();
     }
+
     @FXML
     public void cancelar() {
         // Cerrar la ventana de cancelar sin cambiar la escena

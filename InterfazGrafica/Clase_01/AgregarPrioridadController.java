@@ -18,18 +18,18 @@ public class AgregarPrioridadController {
 
     private ventana1Controller ventanaPrincipalController;  // Controlador de la ventana principal
 
-    // Método para setear el controlador de la ventana principal
+    // CONTROLADOR PRINCIPAL
     public void setVentanaPrincipalController(ventana1Controller controller) {
         this.ventanaPrincipalController = controller;
     }
 
+    //METODOS
     @FXML
     public void guardarPrioridad() {
-        String prioridad = prioridadField.getText().trim();  // Obtener el texto de la prioridad
+        String prioridad = prioridadField.getText().trim();
 
         if (!prioridad.isEmpty()) {
             ventanaPrincipalController.agregarPrioridadALista(prioridad);
-
             cerrarVentana();
         } else {
             System.out.println("Por favor, ingrese una prioridad válida.");
@@ -41,7 +41,6 @@ public class AgregarPrioridadController {
         cerrarVentana();  // Cerrar la ventana sin guardar
     }
 
-    // Método para cerrar la ventana
     private void cerrarVentana() {
         Stage stage = (Stage) guardarBtn.getScene().getWindow();
         stage.close();

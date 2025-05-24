@@ -6,6 +6,9 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,7 +18,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="518.0" prefWidth="781.0" style="-fx-background-color: #1a1a1a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfazGrafica.Login.LoginController">
     <children>
-        <Pane prefHeight="518.0" prefWidth="392.0" style="-fx-background-color: #0d0d0d;">
+        <Pane layoutX="391.0" prefHeight="518.0" prefWidth="392.0" style="-fx-background-color: #0d0d0d;">
             <children>
                 <TextField fx:id="usuarioField" focusTraversable="false" layoutX="63.0" layoutY="249.0" prefHeight="41.0" prefWidth="267.0" promptText="  Usuario" style="-fx-background-color: #212121; -fx-text-fill: #f8f8f8; -fx-background-radius: 10;">
                     <font>
@@ -41,7 +44,8 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Text fx:id="mensajeError" fill="#f8f8f8" layoutX="94.0" layoutY="441.0" text="Por favor completar todos los campos." visible="false" />
+                <Text fx:id="mensajeError" fill="#f8f8f8" layoutX="94.0" layoutY="450.0" text="Por favor completar todos los campos." visible="false" />
+                <Text fx:id="errorInicio" fill="#f8f8f8" layoutX="94.0" layoutY="450.0" text="El usuario o contraseña son incorrectos." visible="false" />
                 <Text fill="#f8f8f8" layoutX="137.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN">
                     <font>
                         <Font name="Microsoft Himalaya" size="57.0" />
@@ -64,5 +68,284 @@
                 </ImageView>
             </children>
         </Pane>
+      <ImageView fitHeight="93.0" fitWidth="104.0" layoutX="288.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/TICKET.png" />
+         </image>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="93.0" fitWidth="104.0" layoutX="288.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/TICKET.png" />
+         </image>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="93.0" fitWidth="104.0" layoutX="288.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/TICKET.png" />
+         </image>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="93.0" fitWidth="104.0" layoutX="287.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/TICKET.png" />
+         </image>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="93.0" fitWidth="104.0" layoutX="288.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/TICKET.png" />
+         </image>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="93.0" fitWidth="104.0" layoutX="161.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/TICKET.png" />
+         </image>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="93.0" fitWidth="104.0" layoutX="161.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/TICKET.png" />
+         </image>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="93.0" fitWidth="104.0" layoutX="161.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/TICKET.png" />
+         </image>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="93.0" fitWidth="104.0" layoutX="160.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/TICKET.png" />
+         </image>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="93.0" fitWidth="104.0" layoutX="161.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/TICKET.png" />
+         </image>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="93.0" fitWidth="104.0" layoutX="22.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/TICKET.png" />
+         </image>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="93.0" fitWidth="104.0" layoutX="22.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/TICKET.png" />
+         </image>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="93.0" fitWidth="104.0" layoutX="22.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/TICKET.png" />
+         </image>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="93.0" fitWidth="104.0" layoutX="21.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/TICKET.png" />
+         </image>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="93.0" fitWidth="104.0" layoutX="22.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/TICKET.png" />
+         </image>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ImageView>
+      <Pane layoutX="36.0" layoutY="51.0" prefHeight="443.0" prefWidth="324.0">
+         <children>
+            <Text layoutX="32.0" layoutY="69.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="SISTEMA" wrappingWidth="254.81640625">
+               <font>
+                  <Font name="Cambria Math" size="62.0" />
+               </font>
+            </Text>
+            <Text fill="#e8e8e8" layoutX="43.0" layoutY="69.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="SISTEMA" wrappingWidth="254.81640625">
+               <font>
+                  <Font name="Cambria Math" size="62.0" />
+               </font>
+            </Text>
+            <Text layoutX="114.0" layoutY="151.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="DE" wrappingWidth="78.81640625">
+               <font>
+                  <Font name="Cambria Math" size="62.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="125.0" layoutY="151.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="DE" wrappingWidth="78.81640625">
+               <font>
+                  <Font name="Cambria Math" size="62.0" />
+               </font>
+            </Text>
+            <Text layoutX="27.0" layoutY="231.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="SERVICIO" wrappingWidth="267.0">
+               <font>
+                  <Font name="Cambria Math" size="62.0" />
+               </font>
+            </Text>
+            <Text fill="#ebebeb" layoutX="34.0" layoutY="227.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="SERVICIO" wrappingWidth="267.0">
+               <font>
+                  <Font name="Cambria Math" size="62.0" />
+               </font>
+            </Text>
+            <Text layoutX="118.0" layoutY="304.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="DE" wrappingWidth="78.81640625">
+               <font>
+                  <Font name="Cambria Math" size="62.0" />
+               </font>
+            </Text>
+            <Text layoutX="57.0" layoutY="388.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="TICKET" wrappingWidth="203.7421875">
+               <font>
+                  <Font name="Cambria Math" size="62.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="129.0" layoutY="304.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="DE" wrappingWidth="78.81640625">
+               <font>
+                  <Font name="Cambria Math" size="62.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="67.0" layoutY="388.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="TICKET" wrappingWidth="203.7421875">
+               <font>
+                  <Font name="Cambria Math" size="62.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
     </children>
 </AnchorPane>

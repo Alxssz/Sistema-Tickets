@@ -14,68 +14,79 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import sistematickets.Permiso;
-import sistematickets.Rol;
+import sistematickets.C2_Permiso;
+import sistematickets.C2_Rol;
 
 public class ventana2Controller {
 
     @FXML
-    private ListView<Permiso> listViewPermisos;
-    private ObservableList<Permiso> listaPermisos = FXCollections.observableArrayList();
+    private ListView<C2_Permiso> listViewPermisos;
+    private ObservableList<C2_Permiso> listaPermisos = FXCollections.observableArrayList();
 
     @FXML
-    private TableView<Rol> listViewRoles;
-    private ObservableList<Rol> listaRoles = FXCollections.observableArrayList();
+    private TableView<C2_Rol> listViewRoles;
+    private ObservableList<C2_Rol> listaRoles = FXCollections.observableArrayList();
 
     @FXML
-    private TableColumn<Rol, String> nombreCol;
+    private TableColumn<C2_Rol, String> nombreCol;
     @FXML
-    private TableColumn<Rol, String> descripcionCol;
+    private TableColumn<C2_Rol, String> descripcionCol;
+
+    @FXML
+    private Button permisosDeRol;
 
     private List<String> historialDeCambios = new ArrayList<>();
 
-    String usuario = "Eddy Alexis";
+    String usuario = "Alexis";
     String fechaHora = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
-    // Método para inicializar la ventana
+    // INICIALIZADOR
     @FXML
     public void initialize() {
-        // Inicializa lista de roles con nombre y descripcion
-        listaRoles = FXCollections.observableArrayList(
-                new Rol("Administrador", "Tiene acceso total al sistema."),
-                new Rol("Técnico", "Puede gestionar tickets, asignarlos y resolverlos."),
-                new Rol("Usuario", "Puede crear y consultar tickets.")
-        );
 
+        // LISTA ROLES
+        // Cargar los roles desde el archivo
+        listaRoles = FXCollections.observableArrayList(new C2_Rol("Administrador", "Tiene acceso total al sistema."),
+                new C2_Rol("Tecnico", "Puede gestionar tickets, asignarlos y resolverlos."),
+                new C2_Rol("Usuario", "Puede crear y consultar tickets.")
+        );
         listViewRoles.setItems(listaRoles);
-        // Vincula las columnas con las propiedades de Rol usando PropertyValueFactory
+
         nombreCol.setCellValueFactory(cellData -> cellData.getValue().nombreRolProperty());
         descripcionCol.setCellValueFactory(cellData -> cellData.getValue().descripcionProperty());
 
-        // Inicializar la lista de permisos
-        listaPermisos = FXCollections.observableArrayList(
-                new Permiso("Crear tickets", "Permite crear nuevos tickets"),
-                new Permiso("Ver tickets", "Permite visualizar los tickets existentes"),
-                new Permiso("Editar tickets", "Permite modificar los detalles de un ticket"),
-                new Permiso("Eliminar tickets", "Permite eliminar tickets del sistema"),
-                new Permiso("Asignar tickets", "Permite asignar tickets a usuarios"),
-                new Permiso("Cambiar estado de tickets", "Permite actualizar el estado de los tickets"),
-                new Permiso("Agregar notas a tickets", "Permite añadir comentarios o notas a los tickets"),
-                new Permiso("Gestionar usuarios", "Permite administrar cuentas de usuarios"),
-                new Permiso("Gestionar departamentos", "Permite administrar los departamentos de la empresa"),
-                new Permiso("Gestionar flujos de trabajo", "Permite configurar el flujo de los tickets"),
-                new Permiso("Configurar parámetros del sistema", "Permite cambiar configuraciones generales del sistema")
+        //LISTA PERMISOS
+        listaPermisos = FXCollections.observableArrayList(new C2_Permiso("Crear tickets", "Permite crear nuevos tickets"),
+                new C2_Permiso("Ver tickets", "Permite visualizar los tickets existentes"),
+                new C2_Permiso("Editar tickets", "Permite modificar los detalles de un ticket"),
+                new C2_Permiso("Eliminar tickets", "Permite eliminar tickets del sistema"),
+                new C2_Permiso("Asignar tickets", "Permite asignar tickets a usuarios"),
+                new C2_Permiso("Cambiar estado de tickets", "Permite actualizar el estado de los tickets"),
+                new C2_Permiso("Agregar notas a tickets", "Permite añadir comentarios o notas a los tickets"),
+                new C2_Permiso("Gestionar usuarios", "Permite administrar cuentas de usuarios"),
+                new C2_Permiso("Gestionar departamentos", "Permite administrar los departamentos de la empresa"),
+                new C2_Permiso("Gestionar flujos de trabajo", "Permite configurar el flujo de los tickets"),
+                new C2_Permiso("Configurar parámetros del sistema", "Permite cambiar configuraciones generales del sistema")
         );
         listViewPermisos.setItems(listaPermisos);
 
-    }
+        listViewRoles.getSelectionModel().selectedItemProperty().addListener((obs, oldRol, nuevoRol) -> {
+            if (nuevoRol != null) {
+                permisosDeRol.setVisible(true);
+                mostrarPermisosIniciales();
+            } else {
+                // Si no hay ningún rol seleccionado, también ocultamos el botón
+                permisosDeRol.setVisible(false);
+            }
+        });
+    }// NAVEGAR ENTRE VENTANAS
 
-    // Volver al menú principal
     public void volverMenu(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/InterfazGrafica/Menu_Principal/menuP.fxml"));
         Parent root = loader.load();
@@ -86,7 +97,7 @@ public class ventana2Controller {
         stageActual.show();
     }
 
-    // Método para agregar un nuevo rol
+    //ROL
     public void agregarRol(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/InterfazGrafica/clase_02/rol.fxml"));
         Parent root = loader.load();
@@ -103,24 +114,16 @@ public class ventana2Controller {
         nuevaVentana.show();
     }
 
-    // Método para agregar un rol a la lista
-    public void agregarRolALista(Rol rol) {
-        listaRoles.add(rol); // Agregar el rol a la lista observable
-        listViewRoles.setItems(listaRoles); // Actualizar el TableView con los nuevos roles
-        historialDeCambios.add(fechaHora + " se agrego " + rol + " como rol por " + usuario);
-    }
-
-    // Método para editar un rol existente
     public void editarRol(ActionEvent event) throws IOException {
-        Rol rolSeleccionado = listViewRoles.getSelectionModel().getSelectedItem();
+        C2_Rol rolSeleccionado = listViewRoles.getSelectionModel().getSelectedItem();
 
         if (rolSeleccionado != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/InterfazGrafica/clase_02/rol.fxml"));
             Parent root = loader.load();
 
             rolController controlador = loader.getController();
-            controlador.setVentanaPrincipalController(this); // Referencia al controlador principal
-            controlador.setRolParaEditar(rolSeleccionado);   // Pasar el rol a editar
+            controlador.setVentanaPrincipalController(this);
+            controlador.setRolParaEditar(rolSeleccionado);
 
             Scene escena = new Scene(root);
             Stage ventana = new Stage();
@@ -132,15 +135,38 @@ public class ventana2Controller {
         }
     }
 
-    @FXML
+    public void agregarRolALista(C2_Rol rol) {
+        listaRoles.add(0, rol); // Agregar el rol a la lista observable
+        listViewRoles.setItems(listaRoles); // Actualizar el TableView con los nuevos roles;
+        historialDeCambios.add(fechaHora + " - Se agrego " + rol + " como rol por " + usuario);
+    }
+
     public void eliminarRol() {
-        Rol seleccionado = listViewRoles.getSelectionModel().getSelectedItem();
+        C2_Rol seleccionado = listViewRoles.getSelectionModel().getSelectedItem();
         if (seleccionado != null) {
             listaRoles.remove(seleccionado);
             listViewRoles.refresh();  // Esto no es obligatorio, pero ayuda
             historialDeCambios.add(fechaHora + " - Se elimino el rol " + seleccionado + " por " + usuario);
         } else {
             System.out.println("Seleccione un rol primero.");
+        }
+    }
+
+    //PERMISOS
+    public void editarPermiso() throws IOException {
+        C2_Permiso permisoSeleccionado = listViewPermisos.getSelectionModel().getSelectedItem();
+        if (permisoSeleccionado != null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/InterfazGrafica/Clase_02/permiso.fxml"));
+            Parent root = loader.load();
+
+            PermisoController controlador = loader.getController();
+            controlador.setPermisoAEditar(permisoSeleccionado);
+            controlador.setListViewPermisos(listViewPermisos);
+            controlador.setVentanaPrincipalController(this);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
         }
     }
 
@@ -159,32 +185,14 @@ public class ventana2Controller {
         nuevaVentana.show();
     }
 
-    @FXML
-    public void editarPermiso() throws IOException {
-        Permiso permisoSeleccionado = listViewPermisos.getSelectionModel().getSelectedItem();
-        if (permisoSeleccionado != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/InterfazGrafica/Clase_02/permiso.fxml"));
-            Parent root = loader.load();
-
-            PermisoController controlador = loader.getController();
-            controlador.setPermisoAEditar(permisoSeleccionado);
-            controlador.setListViewPermisos(listViewPermisos);
-            controlador.setVentanaPrincipalController(this);
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        }
-    }
-
-    void agregarPermisoALista(Permiso permiso) {
-        listaPermisos.add(permiso);  // Agregar el permiso a la lista observable
+    void agregarPermisoALista(C2_Permiso permiso) {
+        listaPermisos.add(0, permiso);  // Agregar el permiso a la lista observable
         listViewPermisos.setItems(listaPermisos);  // Actualizar el ListView con la lista
         historialDeCambios.add(fechaHora + " - Se agrego " + permiso + " como nuevo permiso por " + usuario);
     }
 
     public void eliminarPermiso() {
-        Permiso seleccionado = listViewPermisos.getSelectionModel().getSelectedItem();
+        C2_Permiso seleccionado = listViewPermisos.getSelectionModel().getSelectedItem();
         if (seleccionado != null) {
             listaPermisos.remove(seleccionado);
             listViewPermisos.refresh();
@@ -195,6 +203,81 @@ public class ventana2Controller {
         }
     }
 
+    //ASIGNAR PERMISOS
+    @FXML
+    public void asignarPermiso(ActionEvent event) {
+        C2_Rol rolSeleccionado = listViewRoles.getSelectionModel().getSelectedItem();
+        C2_Permiso permisoSeleccionado = listViewPermisos.getSelectionModel().getSelectedItem();
+
+        if (rolSeleccionado != null && permisoSeleccionado != null) {
+            if (!rolSeleccionado.getPermisos().contains(permisoSeleccionado)) {
+                asignarPermisoARol(rolSeleccionado, permisoSeleccionado);
+                historialDeCambios.add(fechaHora + " - Se asigno el permiso " + permisoSeleccionado + " al rol  " + rolSeleccionado + " por " + usuario);
+                System.out.println("Permiso asignado correctamente.");
+            } else {
+                System.out.println("El rol ya tiene este permiso.");
+            }
+        } else {
+            System.out.println("Seleccione un rol y un permiso.");
+        }
+    }
+
+    @FXML
+    public void quitarPermiso(ActionEvent event) {
+        C2_Rol rolSeleccionado = listViewRoles.getSelectionModel().getSelectedItem();
+        C2_Permiso permisoSeleccionado = listViewPermisos.getSelectionModel().getSelectedItem();
+
+        if (rolSeleccionado != null && permisoSeleccionado != null) {
+            if (rolSeleccionado.getPermisos().contains(permisoSeleccionado)) {
+                quitarPermisoARol(rolSeleccionado, permisoSeleccionado);
+                historialDeCambios.add(fechaHora + " - Se quito el permiso " + permisoSeleccionado + " al rol  " + rolSeleccionado + " por " + usuario);
+                listaPermisos.setAll(rolSeleccionado.getPermisos());
+                System.out.println("Permiso removido correctamente.");
+            } else {
+                System.out.println("El rol no tiene este permiso.");
+            }
+        } else {
+            System.out.println("Seleccione un rol y un permiso.");
+        }
+    }
+
+    public void asignarPermisoARol(C2_Rol rol, C2_Permiso permiso) {
+        rol.agregarPermiso(permiso);
+    }
+
+    public void quitarPermisoARol(C2_Rol rol, C2_Permiso permiso) {
+        rol.quitarPermiso(permiso);
+    }
+
+    public void mostrarPermisosDelRol(ActionEvent event) {
+        C2_Rol rolSeleccionado = listViewRoles.getSelectionModel().getSelectedItem();
+        if (rolSeleccionado != null) {
+            permisosDeRol.setVisible(true);
+            listaPermisos.setAll(rolSeleccionado.getPermisos());
+            listViewPermisos.setItems(listaPermisos);
+            System.out.println("Permisos cargados para el rol: " + rolSeleccionado.getNombreRol());
+        } else {
+            System.out.println("Seleccione un rol para ver sus permisos.");
+        }
+    }
+
+    private void mostrarPermisosIniciales() {
+        listaPermisos.setAll(new C2_Permiso("Crear tickets", "Permite crear nuevos tickets"),
+                new C2_Permiso("Ver tickets", "Permite visualizar los tickets existentes"),
+                new C2_Permiso("Editar tickets", "Permite modificar los detalles de un ticket"),
+                new C2_Permiso("Eliminar tickets", "Permite eliminar tickets del sistema"),
+                new C2_Permiso("Asignar tickets", "Permite asignar tickets a usuarios"),
+                new C2_Permiso("Cambiar estado de tickets", "Permite actualizar el estado de los tickets"),
+                new C2_Permiso("Agregar notas a tickets", "Permite añadir comentarios o notas a los tickets"),
+                new C2_Permiso("Gestionar usuarios", "Permite administrar cuentas de usuarios"),
+                new C2_Permiso("Gestionar departamentos", "Permite administrar los departamentos de la empresa"),
+                new C2_Permiso("Gestionar flujos de trabajo", "Permite configurar el flujo de los tickets"),
+                new C2_Permiso("Configurar parámetros del sistema", "Permite cambiar configuraciones generales del sistema")
+        );
+        listViewPermisos.setItems(listaPermisos);
+    }
+
+    //HISTORIAL
     public void verHistorial(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/InterfazGrafica/Clase_01/Historial_Cambios.fxml"));
         Parent root = loader.load();
@@ -217,4 +300,11 @@ public class ventana2Controller {
         historialDeCambios.add(mensaje);
     }
 
+    public List<C2_Rol> getListaRoles() {
+        return listaRoles;
+    }
+
+    public void guardarGestion() {
+        System.out.println("Se guardo la gestion roles y permisos");
+    }
 }

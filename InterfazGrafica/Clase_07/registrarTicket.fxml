@@ -8,25 +8,27 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="357.0" prefWidth="354.0" style="-fx-background-color: #1a1a1a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane prefHeight="397.0" prefWidth="354.0" style="-fx-background-color: #1a1a1a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfazGrafica.Clase_07.TicketController">
    <children>
       <Text fill="WHITE" layoutX="25.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titulo" wrappingWidth="76.693359375" />
       <Text fill="WHITE" layoutX="25.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripción" wrappingWidth="82.728515625" />
-      <TextField layoutX="111.0" layoutY="64.0" prefHeight="25.0" prefWidth="217.0" promptText="Ingresar Titulo" />
-      <TextField layoutX="111.0" layoutY="113.0" prefHeight="25.0" prefWidth="217.0" promptText="Ingresar Descripción" />
-      <Button layoutX="165.0" layoutY="303.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" style="-fx-background-radius: 8; -fx-background-color: #9eb9f0;" text="Agregar" />
-      <Button layoutX="252.0" layoutY="303.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" style="-fx-background-radius: 8; -fx-background-color: #9eb9f0;" text="Cancelar" />
+      <TextField fx:id="txtTitulo" layoutX="111.0" layoutY="64.0" prefHeight="25.0" prefWidth="217.0" promptText="Ingresar Titulo" />
+      <TextField fx:id="txtDescripcion" layoutX="111.0" layoutY="113.0" prefHeight="25.0" prefWidth="217.0" promptText="Ingresar Descripción" />
+      <Button layoutX="168.0" layoutY="352.0" mnemonicParsing="false" onAction="#crearTicket" prefHeight="25.0" prefWidth="77.0" style="-fx-background-radius: 8; -fx-background-color: #9eb9f0;" text="Agregar" />
+      <Button fx:id="btnCancelar" layoutX="251.0" layoutY="352.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="77.0" style="-fx-background-radius: 8; -fx-background-color: #9eb9f0;" text="Cancelar" />
       <Text fill="WHITE" layoutX="26.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Departamento" />
-      <ComboBox layoutX="112.0" layoutY="157.0" prefHeight="25.0" prefWidth="186.0" promptText="Seleccionar Departamento" />
+      <ComboBox fx:id="cbDepartamento" layoutX="112.0" layoutY="157.0" prefHeight="25.0" prefWidth="186.0" promptText="Seleccionar Departamento" />
       <Text fill="WHITE" layoutX="25.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prioridad" />
-      <ComboBox layoutX="112.0" layoutY="199.0" prefHeight="25.0" prefWidth="186.0" promptText="Seleccionar Prioridad" />
-      <Text fill="WHITE" layoutX="25.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adjuntos" />
-      <Button layoutX="110.0" layoutY="245.0" mnemonicParsing="false" style="-fx-background-radius: 8; -fx-background-color: #9eb9f0;" text="Examinar" />
+      <ComboBox fx:id="cbPrioridad" layoutX="112.0" layoutY="199.0" prefHeight="25.0" prefWidth="186.0" promptText="Seleccionar Prioridad" />
+      <Text fill="WHITE" layoutX="25.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adjuntos" />
+      <Button layoutX="113.0" layoutY="299.0" mnemonicParsing="false" style="-fx-background-radius: 8; -fx-background-color: #9eb9f0;" text="Examinar" />
       <Text fill="WHITE" layoutX="26.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos del Ticket">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font>
       </Text>
+      <Text fill="WHITE" layoutX="24.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estado" />
+      <ComboBox fx:id="cbEstado" layoutX="113.0" layoutY="249.0" prefHeight="25.0" prefWidth="186.0" promptText="Seleccionar Estado" />
    </children>
    <opaqueInsets>
       <Insets />

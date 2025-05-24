@@ -7,20 +7,18 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="518.0" prefWidth="781.0" style="-fx-background-color: #1a1a1a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfazGrafica.Clase_08.ventana8Controller">
+<AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="781.0" style="-fx-background-color: #1a1a1a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfazGrafica.Clase_08.ventana8Controller">
     <children>
         <Pane prefHeight="80.0" prefWidth="781.0" style="-fx-background-color: #0d0d0d;">
             <children>
-            <Label layoutX="65.0" layoutY="27.0" text="GESTIÓN DE TICKETS" textFill="#eeeeee" textOverrun="CLIP">
+            <Label fx:id="gestionTicket" layoutX="65.0" layoutY="27.0" text="GESTIÓN DE TICKETS" textFill="#eeeeee" textOverrun="CLIP">
                <font>
                   <Font size="20.0" />
                </font>
@@ -33,54 +31,51 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <TitledPane collapsible="true" expanded="false" layoutX="604.0" layoutY="26.0" prefHeight="32.0" prefWidth="149.0" text="Ventana De">
-               <content>
-                  <VBox fx:id="reglasContainer" prefHeight="25.0" prefWidth="516.0">
-                     <children>
-                        <VBox prefHeight="113.0" prefWidth="127.0">
-                           <children>
-                              <Button mnemonicParsing="false" onAction="#ventanaUsuario" prefHeight="25.0" prefWidth="131.0" style="-fx-background-color: #ffffff;" text="Usuario">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                              <Button mnemonicParsing="false" onAction="#ventanaTecnico" prefHeight="25.0" prefWidth="145.0" style="-fx-background-color: #ffffff;" text="Tecnico">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                              <Button mnemonicParsing="false" onAction="#ventanaAdmi" prefHeight="25.0" prefWidth="153.0" style="-fx-background-color: #ffffff;" text="Administrador">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                           </children>
-                        </VBox>
-                     </children>
-                  </VBox>
-               </content>
-            </TitledPane>
+            <Label fx:id="misTickets" layoutX="65.0" layoutY="25.0" text="MIS TICKETS" textFill="#eeeeee" textOverrun="CLIP" visible="false">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="asignadosDep" layoutX="64.0" layoutY="27.0" text="TICKETS ASIGNADOS A DEPARTAMENTO" textFill="#eeeeee" textOverrun="CLIP" visible="false">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
             </children>
         </Pane>
         
-        <HBox layoutX="23.0" layoutY="118.0" spacing="10">
-            <children>
-                <Button style="-fx-background-color: #9eb9f0; -fx-background-radius: 8;" text="Exportar" />
-                <ComboBox promptText="Filtros Avanzados" style="-fx-background-color: #9eb9f0; -fx-background-radius: 8;" />
-            </children>
-        </HBox>
+        <HBox layoutX="23.0" layoutY="118.0" spacing="10" />
         
-        <TableView layoutX="23.0" layoutY="172.0" prefHeight="300.0" prefWidth="736.0">
+        <TableView fx:id="listViewTickets" layoutX="23.0" layoutY="172.0" prefHeight="268.0" prefWidth="736.0">
             <columns>
-                <TableColumn prefWidth="50.0" text="No." />
-                <TableColumn prefWidth="200.0" text="Título" />
-                <TableColumn prefWidth="128.0" text="Depto." />
-                <TableColumn prefWidth="110.0" text="Estado" />
-                <TableColumn prefWidth="112.0" text="Prioridad" />
-                <TableColumn prefWidth="120.0" text="Asignado a" />
+                <TableColumn fx:id="colId" editable="false" prefWidth="42.0" text="Id." />
+            <TableColumn fx:id="colTitulo" prefWidth="143.0" text="Titulo" />
+                <TableColumn fx:id="colDescripcion" prefWidth="143.0" text="Descripcion" />
+                <TableColumn fx:id="colDepartamento" prefWidth="150.0" text="Departamento" />
+                <TableColumn fx:id="colPrioridad" prefWidth="115.0" text="Prioridad" />
+                <TableColumn fx:id="colEstado" prefWidth="130.0" text="Estado" />
+                <TableColumn fx:id="colFecha" prefWidth="155.0" text="Fecha Creacion " />
             </columns>
         </TableView>
-      <TextField layoutX="235.0" layoutY="118.0" promptText="Buscar..." />
-          <Button layoutX="390.0" layoutY="118.0" style="-fx-background-color: #9eb9f0; -fx-background-radius: 8;" text="Dashboard" />
+      <TextField fx:id="campoBusqueda" layoutX="23.0" layoutY="121.0"  onKeyReleased="#buscar" prefHeight="25.0" prefWidth="236.0" promptText="Buscar..." />
+          <ComboBox fx:id="comboFiltro" layoutX="280.0" layoutY="121.0" prefHeight="25.0" prefWidth="144.0" promptText="Filtrar ticket por " style="-fx-background-color: #9eb9f0; -fx-background-radius: 8;" />
+      <Pane fx:id="panelAdmin" layoutX="325.0" layoutY="444.0" prefHeight="60.0" prefWidth="434.0">
+         <children>
+            <Button layoutX="14.0" layoutY="18.0" mnemonicParsing="false" onAction="#reasignarDepartamento" style="-fx-background-color: #9eb9f0; -fx-background-radius: 8;" text="Reasignar Departamento de un ticket " />
+            <Button layoutX="247.0" layoutY="18.0" mnemonicParsing="false" onAction="#modificarEstado" style="-fx-background-color: #9eb9f0; -fx-background-radius: 8;" text="Modificar Estado de un ticket" />
+         </children>
+      </Pane>
+      <Pane fx:id="panelTecnico" layoutX="479.0" layoutY="444.0" prefHeight="60.0" prefWidth="280.0" visible="false">
+         <children>
+            <Button layoutX="27.0" layoutY="20.0" mnemonicParsing="false" onAction="#tomarTicket" style="-fx-background-color: #9eb9f0; -fx-background-radius: 8;" text="Tomar Ticket" />
+            <Button layoutX="131.0" layoutY="20.0" mnemonicParsing="false" onAction="#agregarNota" style="-fx-background-color: #9eb9f0; -fx-background-radius: 8;" text="Agregar Nota a Ticket" />
+         </children>
+      </Pane>
+      <Pane fx:id="panelGeneral" layoutX="424.0" layoutY="452.0" prefHeight="52.0" prefWidth="335.0" visible="false">
+         <children>
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#consultarDetalles" style="-fx-background-color: #9eb9f0; -fx-background-radius: 8;" text="Consultar Detalles del ticket" />
+            <Button layoutX="189.0" layoutY="14.0" mnemonicParsing="false" onAction="#agregarNota" style="-fx-background-color: #9eb9f0; -fx-background-radius: 8;" text="Agregar Nota a Ticket" />
+         </children>
+      </Pane>
     </children>
 </AnchorPane>
