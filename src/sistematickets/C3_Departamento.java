@@ -7,10 +7,11 @@ import javafx.beans.property.StringProperty;
 
 public class C3_Departamento implements Serializable {
 
-    private transient StringProperty nombre;        
-    private transient StringProperty descripcion;    
-    private String nombreString;                      
-    private String descripcionString;                 
+    private transient StringProperty nombre;
+    private transient StringProperty descripcion;
+    private String nombreString;
+    private String descripcionString;
+    private int id;
 
     private ArrayList<C2_Tecnico> tecnicos;
     private ArrayList<C2_Tecnico> tecnicosAsignados;
@@ -23,9 +24,12 @@ public class C3_Departamento implements Serializable {
 
         this.nombre = new SimpleStringProperty(nombre);
         this.descripcion = new SimpleStringProperty(descripcion);
-        
+
         // Registrar automáticamente el departamento en el gestor de colas
         C3_GestorColas.registrarDepartamento(this);
+    }
+
+    public C3_Departamento() {
     }
 
     // Obtener nombre en String (método principal)
@@ -68,6 +72,18 @@ public class C3_Departamento implements Serializable {
             descripcion = new SimpleStringProperty(descripcionString);
         }
         return descripcion;
+    }
+
+    public C3_Departamento(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     // Métodos para técnicos

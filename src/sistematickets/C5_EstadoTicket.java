@@ -18,6 +18,10 @@ public class C5_EstadoTicket {
         this.esEstadoFinal = esEstadoFinal;
         this.siguientesEstados = new ArrayList<>();
     }
+    
+        public C5_EstadoTicket() {
+    }
+
 
     // Getters
     public String getNombre() {
@@ -36,7 +40,15 @@ public class C5_EstadoTicket {
         return siguientesEstados;
     }
 
+    public boolean isEsEstadoFinal() {
+        return esEstadoFinal;
+    }
+    
+
     // Setters
+    
+
+    
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

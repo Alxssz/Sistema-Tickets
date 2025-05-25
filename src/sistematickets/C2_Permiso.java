@@ -24,6 +24,10 @@ public class C2_Permiso implements Serializable {
         this.descripcion = descripcion;
     }
 
+    //constructor vacio
+    public C2_Permiso() {
+    }
+
     // Getters y setters
     public String getNombrePermiso() {
         return nombrePermiso;

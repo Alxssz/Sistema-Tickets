@@ -11,6 +11,7 @@ import java.util.List;
 public class C1_ParametrosDelSistema implements Serializable {
 
     // Variables
+    private int id;
     private String nombreEmpresa;
     private String logo;
     private String idioma;
@@ -40,7 +41,8 @@ public class C1_ParametrosDelSistema implements Serializable {
         }
     }
 
-    public C1_ParametrosDelSistema(String nombreEmpresa, String logo, String idioma, String zonaHoraria, int tiempoVencimiento) {
+    public C1_ParametrosDelSistema(int id, String nombreEmpresa, String logo, String idioma, String zonaHoraria, int tiempoVencimiento) {
+        this.id= id;
         this.nombreEmpresa = nombreEmpresa;
         this.logo = logo;
         this.idioma = idioma;
@@ -138,6 +140,15 @@ public class C1_ParametrosDelSistema implements Serializable {
         prioridades.remove(prioridad);
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
     // Métodos 
     public void mostrarInformacion() {
         System.out.println("DATOS DE LA EMPRESA");

@@ -2,7 +2,7 @@ package sistematickets;
 
 import java.io.Serializable;
 
-public class C2_UsuarioSistema extends C2_Persona implements Serializable {
+public class C2_UsuarioSistema implements Serializable {
 
     private String nombre;
     private String correo;
@@ -13,7 +13,6 @@ public class C2_UsuarioSistema extends C2_Persona implements Serializable {
     private boolean activo;
 
     public C2_UsuarioSistema(String nombre, String correo, String nombreUsuario, String contrasena, C2_Rol rol, C3_Departamento departamento) {
-        super(nombre, correo);
         this.nombre = nombre;
         this.correo = correo;
         this.nombreUsuario = nombreUsuario;
@@ -21,6 +20,10 @@ public class C2_UsuarioSistema extends C2_Persona implements Serializable {
         this.rol = rol;
         this.departamento = departamento;
         this.activo = true; // Por defecto activo
+    }
+
+    public C2_UsuarioSistema() {
+
     }
 
     // Validaciones básicas
@@ -40,12 +43,10 @@ public class C2_UsuarioSistema extends C2_Persona implements Serializable {
     }
 
     // Getters
-    @Override
     public String getNombre() {
         return nombre;
     }
 
-    @Override
     public String getCorreo() {
         return correo;
     }
@@ -66,12 +67,10 @@ public class C2_UsuarioSistema extends C2_Persona implements Serializable {
         return contrasena;
     }
 
-    @Override
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    @Override
     public void setCorreo(String correo) {
         this.correo = correo;
     }
@@ -91,6 +90,15 @@ public class C2_UsuarioSistema extends C2_Persona implements Serializable {
     public void setDepartamento(C3_Departamento departamento) {
         this.departamento = departamento;
     }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setRol(C2_Rol rol) {
+        this.rol = rol;
+    }
+
 
     public static C2_UsuarioSistema desdeLinea(String linea) {
         String[] partes = linea.split(",", -1); // El -1 permite incluir campos vacíos
@@ -125,4 +133,9 @@ public class C2_UsuarioSistema extends C2_Persona implements Serializable {
         return nombre;
     }
 
+    void mostrarInformacion() {
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Correo: " + correo);
+
+    }
 }

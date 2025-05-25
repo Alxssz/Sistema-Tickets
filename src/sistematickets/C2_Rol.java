@@ -15,6 +15,7 @@ public class C2_Rol implements Serializable {
     // Campos serializables
     private String nombreRol;
     private String descripcion;
+    private int id;
 
     // Propiedades JavaFX (transient porque no se serializan)
     private transient StringProperty nombreRolProp;
@@ -36,7 +37,15 @@ public class C2_Rol implements Serializable {
         this.descripcionProp = new SimpleStringProperty(descripcion);
     }
 
+    //constructor vacio 
+    public C2_Rol() {
+    }
+
     // Getters y setters para campos serializables
+    public int getId() {
+        return id;
+    }
+
     public String getNombreRol() {
         return nombreRol;
     }
@@ -87,10 +96,14 @@ public class C2_Rol implements Serializable {
     public void quitarPermiso(C2_Permiso permiso) {
         if (listadoPermisos.contains(permiso)) {
             listadoPermisos.remove(permiso);
-            System.out.println("Permiso eliminado correctamente del rol "+ nombreRol);
+            System.out.println("Permiso eliminado correctamente del rol " + nombreRol);
         } else {
             System.out.println("El permiso no existe en la lista.");
         }
+    }
+
+    public C2_Rol(String nombreRol) {
+        this.nombreRol = nombreRol;
     }
 
     // Getters y setters para la lista de permisos
@@ -116,7 +129,7 @@ public class C2_Rol implements Serializable {
         if (listadoPermisos.isEmpty()) {
             System.out.println("El listado está vacío.");
         } else {
-            System.out.println("Permisos asignados al rol " +nombreRol +" : ");
+            System.out.println("Permisos asignados al rol " + nombreRol + " : ");
             for (C2_Permiso permiso : listadoPermisos) {
                 System.out.println(permiso);
             }
@@ -130,7 +143,9 @@ public class C2_Rol implements Serializable {
 
     // Método equalsIgnoreCase implementado correctamente
     public boolean equalsIgnoreCase(String otroNombre) {
-        if (otroNombre == null) return false;
+        if (otroNombre == null) {
+            return false;
+        }
         return this.nombreRol.equalsIgnoreCase(otroNombre);
     }
 }
